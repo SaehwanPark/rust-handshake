@@ -88,7 +88,7 @@ This project is part of a comprehensive blog series on Rust network programming:
 
 - **[Episode 1: Introduction + Client + Sequential Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep1/)** -- Basics of TCP programming in Rust and implementing the foundation
 - **[Episode 2: Threaded + ThreadPool Servers](https://debugndiscover.netlify.app/posts/rust-handshake-ep2/)** -- Exploring concurrent server architectures
-- **Episode 3: Event-driven (Async/Await)** *(Coming Soon)* -- Modern asynchronous programming approaches
+- **[Episode 3: Event-driven (Async/Await)](https://debugndiscover.netlify.app/posts/rust-handshake-ep3/)** -- Modern asynchronous programming approaches
 
 ## 🏗️ Architecture Highlights
 
