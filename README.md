@@ -14,10 +14,9 @@ This exchange ensures both parties can send and receive messages correctly befor
 
 ## 🚀 Applications Overview
 
-This repository contains **4 different implementations** demonstrating various approaches to network programming in Rust:
+This repository contains **6 different implementations** demonstrating various approaches to network programming in Rust:
 
-### 🔹 Client (`client-sync.rs`)
-A synchronous TCP client that initiates the 3-way handshake with any of the server implementations.
+### 🔹 Sequential Client (`client-sync.rs`)
 
 **Usage:**
 ```bash
@@ -25,7 +24,6 @@ cargo run --bin client-sync -- <server_ip> <server_port> <initial_sequence>
 ```
 
 ### 🔹 Sequential Server (`server-sequential.rs`)
-A basic server that handles **one client at a time**. Simple but limited in scalability.
 
 **Usage:**
 ```bash
@@ -33,7 +31,6 @@ cargo run --bin server-sequential -- <port>
 ```
 
 ### 🔹 Thread-per-Connection Server (`server-threaded.rs`)
-Creates a **new thread for each client connection**, allowing concurrent client handling. Better scalability but with thread creation overhead.
 
 **Usage:**
 ```bash
@@ -41,17 +38,31 @@ cargo run --bin server-threaded -- <port>
 ```
 
 ### 🔹 Thread Pool Server (`server-threadpool.rs`)
-Uses a **fixed-size thread pool** to handle client connections efficiently. Optimal resource management with configurable worker threads.
 
 **Usage:**
 ```bash
 cargo run --bin server-threadpool -- <port>
 ```
 
+### 🔹 Async Client (`client-async.rs`)
+
+**Usage:**
+```bash
+cargo run --bin client-async -- <server_ip> <server_port> <initial_sequence>
+```
+
+### 🔹 Event-Driven Server (`server-async.rs`)
+
+**Usage:**
+```bash
+cargo run --bin server-async -- <port>
+```
+
+
 ## 🛠️ Building and Running
 
 ### Prerequisites
-- Rust 1.70+ (uses 2021 edition)
+- Rust 1.85+ (uses 2024 edition)
 - Cargo package manager
 
 ### Build Commands
@@ -86,9 +97,9 @@ cargo run --bin client-sync -- 127.0.0.1 8080 100
 
 This project is part of a comprehensive blog series on Rust network programming:
 
-- **[Episode 1: Introduction + Client + Sequential Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep1/)** -- Basics of TCP programming in Rust and implementing the foundation
-- **[Episode 2: Threaded + ThreadPool Servers](https://debugndiscover.netlify.app/posts/rust-handshake-ep2/)** -- Exploring concurrent server architectures
-- **[Episode 3: Event-driven (Async/Await)](https://debugndiscover.netlify.app/posts/rust-handshake-ep3/)** -- Modern asynchronous programming approaches
+- **[Episode 1: Introduction + Client + Sequential Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep1/)**
+- **[Episode 2: Threaded + ThreadPool Servers](https://debugndiscover.netlify.app/posts/rust-handshake-ep2/)**
+- **[Episode 3: Event-Driven Async Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep3/)**
 
 ## 🏗️ Architecture Highlights
 
@@ -101,6 +112,7 @@ This project is part of a comprehensive blog series on Rust network programming:
 ## 📦 Dependencies
 
 - [`threadpool`](https://crates.io/crates/threadpool) - Thread pool implementation for concurrent servers
+- [`tokio`](https://crates.io/crates/tokio) - Async runtime for high-performance networking
 - [`thiserror`](https://crates.io/crates/thiserror) - Structured error handling
 - [`anyhow`](https://crates.io/crates/anyhow) - Flexible error handling utilities
 
