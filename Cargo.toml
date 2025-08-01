@@ -1,6 +1,6 @@
 [package]
 name = "tcp_handshake"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 authors = ["Sae-Hwan Park"]
 description = "Handshake protocol TCP server/client implementations to showcase Rust's network programming"
@@ -8,12 +8,17 @@ repository = "https://github.com/SaehwanPark/rust-handshake"
 
 [dependencies]
 threadpool = "1.8.1"
-anyhow = "1.0"
-thiserror = "1.0"
+anyhow = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["full"] }
 
 [[bin]]
 name = "client-sync"
 path = "src/bin/client-sync.rs"
+
+[[bin]]
+name = "client-async"
+path = "src/bin/client-async.rs"
 
 [[bin]]
 name = "server-sequential"
@@ -26,6 +31,10 @@ path = "src/bin/server-threaded.rs"
 [[bin]]
 name = "server-threadpool"
 path = "src/bin/server-threadpool.rs"
+
+[[bin]]
+name = "server-async"
+path = "src/bin/server-async.rs"
 
 [profile.release]
 strip = true

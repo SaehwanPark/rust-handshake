@@ -7,6 +7,9 @@ use std::env;
 use std::net::TcpListener;
 use std::process;
 
+// Async imports
+use tokio::net::TcpListener as AsyncTcpListener;
+
 use crate::error::{HandshakeError, Result};
 
 /**
@@ -93,4 +96,18 @@ pub fn calculate_optimal_thread_count() -> usize {
 pub fn exit_with_error(error: &HandshakeError) -> ! {
   eprintln!("ERROR: {error}");
   process::exit(1);
+}
+
+/**
+ * Async version: Creates and binds a TCP listener
+ */
+pub async fn create_async_listener(port: u16) -> Result<AsyncTcpListener> {
+  let bind_addr = format!("0.0.0.0:{port}");
+  let listener = AsyncTcpListener::bind(&bind_addr)
+    .await
+    .map_err(|e| HandshakeError::Io(e))?;
+
+  println!("Event-driven server listening on {bind_addr}");
+  println!("Using Tokio async runtime for concurrent connection handling");
+  Ok(listener)
 }
