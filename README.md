@@ -100,6 +100,7 @@ This project is part of a comprehensive blog series on Rust network programming:
 - **[Episode 1: Introduction + Client + Sequential Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep1/)**
 - **[Episode 2: Threaded + ThreadPool Servers](https://debugndiscover.netlify.app/posts/rust-handshake-ep2/)**
 - **[Episode 3: Event-Driven Async Server](https://debugndiscover.netlify.app/posts/rust-handshake-ep3/)**
+- **[Episode 4: Postmortem](https://debugndiscover.netlify.app/posts/rust-handshake-ep4/)**
 
 ## 🏗️ Architecture Highlights
 
